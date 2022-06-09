@@ -4,7 +4,7 @@ require("express-async-errors");
 //extra security packages for deployment
 const helmet = require("helmet");
 const cors = require("cors");
-const xxs = require("xxs-clean");
+const xss = require("xss-clean");
 const rateLimiter = require("express-rate-limit");
 
 const express = require("express");
@@ -35,7 +35,7 @@ app.use(
 app.use(express.json());
 app.use(helmet());
 app.use(cors());
-app.use(xxs());
+app.use(xss());
 // routes
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/jobs", authenticateUser, jobsRouter);
